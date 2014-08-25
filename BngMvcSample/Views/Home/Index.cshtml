@@ -1,0 +1,42 @@
+﻿@using System.Web.Optimization
+@using Seemplest.BngMvc.Core
+@using Seemplest.BngMvc.Core.Components
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Scripts")
+</head>
+<body>
+@using (var cont = Html.Container("style", "padding-top: 70px;"))
+{
+    using (var row = cont.Row(new Row().WidthMd(4)))
+    {
+        using (row.Column("style", "background-color: red;"))
+        {
+            @:First
+        }
+        using (row.Column())
+        {
+            @:Second
+        }
+        using (var nestedRow = row.Column())
+        {
+            using (nestedRow.Column())
+            {
+                @:ThirdA
+            }
+            using (nestedRow.Column("style", "color: blue;"))
+            {
+                @:ThirdB
+            }
+        }
+    }
+}
+</body>
+</html>

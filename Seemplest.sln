@@ -1,0 +1,135 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{16AEACC0-4A42-478E-B1A6-C433CBDFF4FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{7D4099BF-0180-4D9D-83CD-4147C6F209B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seemplest.Core", "Seemplest.Core\Seemplest.Core.csproj", "{FFA9F4ED-C258-4033-96E9-FC8BE8AD719A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seemplest.Core.UnitTests", "Seemplets.Core.UnitTests\Seemplest.Core.UnitTests.csproj", "{A4B8DCB7-9341-4047-A4AA-CA6F2A1ECB4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seemplest.MsSql", "Seemplest.MsSql\Seemplest.MsSql.csproj", "{C81EDBC6-5989-4232-8B23-57831056E6EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MsSql", "MsSql", "{897D59A0-292F-41F4-88EF-F4F273C6EAF0}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Seemplest.Core.MsSql.Schema", "Seemplest.Core.MsSql.Schema\Seemplest.Core.MsSql.Schema.sqlproj", "{9ED2AD89-53D0-41CF-A02C-AC6FDE5B80ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seemplest.MsSql.UnitTests", "Seemplest.MsSql.UnitTests\Seemplest.MsSql.UnitTests.csproj", "{855DBAE2-3776-4258-BD5F-154F2BD9CCAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{7DA7F742-85C9-4F34-AD91-034996912EEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundTaskHostSample", "BackgroundTaskHostSample\BackgroundTaskHostSample.csproj", "{309AC59C-C45C-4A45-A79D-7AF2B57054BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BngMvc", "BngMvc", "{9DCAE436-B389-40CB-97D5-94EB4A2E7337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seemplest.BngMvc.Core", "Seemplest.BngMvc.Core\Seemplest.BngMvc.Core.csproj", "{DE22956D-61D0-40C6-BE96-43A7ED021CEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BngMvcSample", "BngMvcSample\BngMvcSample.csproj", "{2DABC622-7558-4A31-9D3B-3E3F1BC64E68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seemplest.BngMvc.Core.Tests", "Seemplest.BngMvc.Core.Tests\Seemplest.BngMvc.Core.Tests.csproj", "{EFF1D4E9-BC3E-428C-A0E0-76B95819AEC5}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs03
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BackgroundTaskHostSample\\BackgroundTaskHostSample.csproj
+		SccProjectTopLevelParentUniqueName1 = Seemplest.sln
+		SccProjectName1 = BackgroundTaskHostSample
+		SccLocalPath1 = BackgroundTaskHostSample
+		SccProjectUniqueName2 = Seemplest.Core.MsSql.Schema\\Seemplest.Core.MsSql.Schema.sqlproj
+		SccProjectTopLevelParentUniqueName2 = Seemplest.sln
+		SccProjectName2 = Seemplest.Core.MsSql.Schema
+		SccLocalPath2 = Seemplest.Core.MsSql.Schema
+		SccProjectUniqueName3 = Seemplest.Core\\Seemplest.Core.csproj
+		SccProjectTopLevelParentUniqueName3 = Seemplest.sln
+		SccProjectName3 = Seemplest.Core
+		SccLocalPath3 = Seemplest.Core
+		SccProjectUniqueName4 = Seemplest.MsSql.UnitTests\\Seemplest.MsSql.UnitTests.csproj
+		SccProjectTopLevelParentUniqueName4 = Seemplest.sln
+		SccProjectName4 = Seemplest.MsSql.UnitTests
+		SccLocalPath4 = Seemplest.MsSql.UnitTests
+		SccProjectUniqueName5 = Seemplest.MsSql\\Seemplest.MsSql.csproj
+		SccProjectTopLevelParentUniqueName5 = Seemplest.sln
+		SccProjectName5 = Seemplest.MsSql
+		SccLocalPath5 = Seemplest.MsSql
+		SccProjectUniqueName6 = Seemplets.Core.UnitTests\\Seemplest.Core.UnitTests.csproj
+		SccProjectTopLevelParentUniqueName6 = Seemplest.sln
+		SccProjectName6 = Seemplets.Core.UnitTests
+		SccLocalPath6 = Seemplets.Core.UnitTests
+		SccProjectUniqueName7 = Seemplest.BngMvc.Core\\Seemplest.BngMvc.Core.csproj
+		SccProjectTopLevelParentUniqueName7 = Seemplest.sln
+		SccProjectName7 = Seemplest.BngMvc.Core
+		SccLocalPath7 = Seemplest.BngMvc.Core
+		SccProjectUniqueName8 = BngMvcSample\\BngMvcSample.csproj
+		SccProjectTopLevelParentUniqueName8 = Seemplest.sln
+		SccProjectName8 = BngMvcSample
+		SccLocalPath8 = BngMvcSample
+		SccProjectUniqueName9 = Seemplest.BngMvc.Core.Tests\\Seemplest.BngMvc.Core.Tests.csproj
+		SccProjectTopLevelParentUniqueName9 = Seemplest.sln
+		SccProjectName9 = Seemplest.BngMvc.Core.Tests
+		SccLocalPath9 = Seemplest.BngMvc.Core.Tests
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFA9F4ED-C258-4033-96E9-FC8BE8AD719A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA9F4ED-C258-4033-96E9-FC8BE8AD719A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA9F4ED-C258-4033-96E9-FC8BE8AD719A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA9F4ED-C258-4033-96E9-FC8BE8AD719A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B8DCB7-9341-4047-A4AA-CA6F2A1ECB4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B8DCB7-9341-4047-A4AA-CA6F2A1ECB4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B8DCB7-9341-4047-A4AA-CA6F2A1ECB4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B8DCB7-9341-4047-A4AA-CA6F2A1ECB4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C81EDBC6-5989-4232-8B23-57831056E6EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C81EDBC6-5989-4232-8B23-57831056E6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C81EDBC6-5989-4232-8B23-57831056E6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C81EDBC6-5989-4232-8B23-57831056E6EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED2AD89-53D0-41CF-A02C-AC6FDE5B80ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED2AD89-53D0-41CF-A02C-AC6FDE5B80ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED2AD89-53D0-41CF-A02C-AC6FDE5B80ED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9ED2AD89-53D0-41CF-A02C-AC6FDE5B80ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED2AD89-53D0-41CF-A02C-AC6FDE5B80ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED2AD89-53D0-41CF-A02C-AC6FDE5B80ED}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{855DBAE2-3776-4258-BD5F-154F2BD9CCAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{855DBAE2-3776-4258-BD5F-154F2BD9CCAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{855DBAE2-3776-4258-BD5F-154F2BD9CCAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{855DBAE2-3776-4258-BD5F-154F2BD9CCAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{309AC59C-C45C-4A45-A79D-7AF2B57054BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309AC59C-C45C-4A45-A79D-7AF2B57054BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309AC59C-C45C-4A45-A79D-7AF2B57054BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309AC59C-C45C-4A45-A79D-7AF2B57054BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE22956D-61D0-40C6-BE96-43A7ED021CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE22956D-61D0-40C6-BE96-43A7ED021CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE22956D-61D0-40C6-BE96-43A7ED021CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE22956D-61D0-40C6-BE96-43A7ED021CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DABC622-7558-4A31-9D3B-3E3F1BC64E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DABC622-7558-4A31-9D3B-3E3F1BC64E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DABC622-7558-4A31-9D3B-3E3F1BC64E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DABC622-7558-4A31-9D3B-3E3F1BC64E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFF1D4E9-BC3E-428C-A0E0-76B95819AEC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFF1D4E9-BC3E-428C-A0E0-76B95819AEC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFF1D4E9-BC3E-428C-A0E0-76B95819AEC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFF1D4E9-BC3E-428C-A0E0-76B95819AEC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FFA9F4ED-C258-4033-96E9-FC8BE8AD719A} = {16AEACC0-4A42-478E-B1A6-C433CBDFF4FF}
+		{A4B8DCB7-9341-4047-A4AA-CA6F2A1ECB4E} = {7D4099BF-0180-4D9D-83CD-4147C6F209B6}
+		{C81EDBC6-5989-4232-8B23-57831056E6EB} = {897D59A0-292F-41F4-88EF-F4F273C6EAF0}
+		{9ED2AD89-53D0-41CF-A02C-AC6FDE5B80ED} = {897D59A0-292F-41F4-88EF-F4F273C6EAF0}
+		{855DBAE2-3776-4258-BD5F-154F2BD9CCAF} = {7D4099BF-0180-4D9D-83CD-4147C6F209B6}
+		{309AC59C-C45C-4A45-A79D-7AF2B57054BB} = {7DA7F742-85C9-4F34-AD91-034996912EEB}
+		{DE22956D-61D0-40C6-BE96-43A7ED021CEF} = {9DCAE436-B389-40CB-97D5-94EB4A2E7337}
+		{2DABC622-7558-4A31-9D3B-3E3F1BC64E68} = {7DA7F742-85C9-4F34-AD91-034996912EEB}
+		{EFF1D4E9-BC3E-428C-A0E0-76B95819AEC5} = {7D4099BF-0180-4D9D-83CD-4147C6F209B6}
+	EndGlobalSection
+EndGlobal
