@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Seemplest.Core.DataAccess;
 using Seemplest.Core.DataAccess.Attributes;
 using Seemplest.Core.DataAccess.DataRecords;
@@ -10,7 +11,7 @@ using SoftwareApproach.TestingExtensions;
 namespace Seemplest.MsSql.UnitTests.DataAccess
 {
     [TestClass]
-    public class SqlDataAccessOperationBaseTest
+    public class SqlDataAccessOperationBaseAsyncTest
     {
         private const string DB_CONN = "connStr=Seemplest";
 
@@ -41,21 +42,7 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
         }
 
         [TestMethod]
-        public void SetOperationModeWorksOnlyOnce()
-        {
-            // --- Arrange
-            var dao = new MyDataAccessOperation(DB_CONN);
-            dao.SetOperationMode(SqlOperationMode.ReadOnly);
-            
-            // --- Act
-            dao.SetOperationMode(SqlOperationMode.ReadWrite);
-
-            // --- Assert
-            dao.Mode.ShouldEqual(SqlOperationMode.ReadOnly);
-        }
-
-        [TestMethod]
-        public void BeginTransactionWorksAsExpected()
+        public async Task BeginTransactionWorksAsExpected()
         {
             // --- Arrange
             var data = new DataRecord
@@ -66,23 +53,23 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             // --- Act
             using (var dc = DataAccessFactory.CreateContext<ITestDataOperations>())
             {
-                dc.BeginTransaction();
-                dc.InsertData(data);
-                dc.Complete();
+                await dc.BeginTransactionAsync();
+                await dc.InsertDataAsync(data);
+                await dc.CompleteAsync();
             }
 
             // --- Assert
             DataRecord back;
             using (var dc = DataAccessFactory.CreateReadOnlyContext<ITestDataOperations>())
             {
-                back = dc.GetData(data.Id);
+                back = await dc.GetDataAsync(data.Id);
             }
 
             back.ShouldNotBeNull();
         }
 
         [TestMethod]
-        public void AbortTransactionWorksAsExpected()
+        public async Task AbortTransactionWorksAsExpected()
         {
             // --- Arrange
             var data = new DataRecord
@@ -93,16 +80,16 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             // --- Act
             using (var dc = DataAccessFactory.CreateContext<ITestDataOperations>())
             {
-                dc.BeginTransaction();
-                dc.InsertData(data);
-                dc.AbortTransaction();
+                await dc.BeginTransactionAsync();
+                await dc.InsertDataAsync(data);
+                await dc.AbortTransactionAsync();
             }
 
             // --- Assert
             DataRecord back;
             using (var dc = DataAccessFactory.CreateReadOnlyContext<ITestDataOperations>())
             {
-                back = dc.GetData(data.Id);
+                back = await dc.GetDataAsync(data.Id);
             }
 
             back.ShouldBeNull();
@@ -144,9 +131,9 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
 
         interface ITestDataOperations : IDataAccessOperation
         {
-            int InsertData(DataRecord record);
+            Task<int> InsertDataAsync(DataRecord record);
 
-            DataRecord GetData(int id);
+            Task<DataRecord> GetDataAsync(int id);
         }
 
         internal class TestDataOperations : MyDataAccessOperation, ITestDataOperations
@@ -156,15 +143,15 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             {
             }
 
-            public int InsertData(DataRecord record)
+            public async Task<int> InsertDataAsync(DataRecord record)
             {
-                Operation(ctx => ctx.Insert(record));
+                await OperationAsync(ctx => ctx.InsertAsync(record));
                 return record.Id;
             }
 
-            public DataRecord GetData(int id)
+            public async Task<DataRecord> GetDataAsync(int id)
             {
-                return Operation(ctx => ctx.FirstOrDefault<DataRecord>("where Id = @0", id));
+                return await OperationAsync(ctx => ctx.FirstOrDefaultAsync<DataRecord>("where Id = @0", id));
             }
         }
     }

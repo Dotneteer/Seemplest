@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace Seemplest.Core.DataAccess.DataServices
 {
@@ -29,5 +30,21 @@ namespace Seemplest.Core.DataAccess.DataServices
         /// Sign the operation as ready to commit
         /// </summary>
         void Complete();
+
+        /// <summary>
+        /// Starts a new transaction -- async
+        /// </summary>
+        /// <param name="level">Transaction isolation level</param>
+        Task BeginTransactionAsync(IsolationLevel? level = null);
+
+        /// <summary>
+        /// Aborts the current transaction -- async
+        /// </summary>
+        Task AbortTransactionAsync();
+
+        /// <summary>
+        /// Sign the operation as ready to commit
+        /// </summary>
+        Task CompleteAsync();
     }
 }

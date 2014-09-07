@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Seemplest.Core.DataAccess;
 using Seemplest.Core.DataAccess.DataServices;
+using System.Threading.Tasks;
 
 namespace Seemplest.MsSql.DataAccess
 {
@@ -39,7 +40,7 @@ namespace Seemplest.MsSql.DataAccess
         /// <summary>
         /// Gets the data access context
         /// </summary>
-        private SqlDatabase Context
+        protected SqlDatabase Context
         {
             get 
             {
@@ -87,6 +88,31 @@ namespace Seemplest.MsSql.DataAccess
         }
 
         /// <summary>
+        /// Starts a new transaction -- async
+        /// </summary>
+        /// <param name="level">Transaction isolation level</param>
+        public async Task BeginTransactionAsync(IsolationLevel? level = null)
+        {
+            await Context.BeginTransactionAsync(level);
+        }
+
+        /// <summary>
+        /// Aborts the current transaction -- async
+        /// </summary>
+        public async Task AbortTransactionAsync()
+        {
+            await Context.AbortTransactionAsync();
+        }
+
+        /// <summary>
+        /// Sign the operation as ready to commit
+        /// </summary>
+        public async Task CompleteAsync()
+        {
+            await Context.CompleteTransactionAsync();
+        }
+
+        /// <summary>
         /// Executes the operation on the private context
         /// </summary>
         /// <param name="action">Operation to execute on the context</param>
@@ -110,6 +136,37 @@ namespace Seemplest.MsSql.DataAccess
             try
             {
                 return function(Context);
+            }
+            catch (SqlException ex)
+            {
+                throw DatabaseExceptionHelper.TransformSqlException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Executes the operation on the private context
+        /// </summary>
+        /// <param name="action">Operation to execute on the context</param>
+        protected async Task OperationAsync(Func<SqlDatabase, Task> action)
+        {
+            await OperationAsync(async ctx =>
+            {
+                await action(ctx);
+                return 0;
+            });
+        }
+
+        /// <summary>
+        /// Executes the operation in async way on the private context
+        /// </summary>
+        /// <typeparam name="TResult">Type of the operation's result</typeparam>
+        /// <param name="function">Operation function</param>
+        /// <returns></returns>
+        protected async Task<TResult> OperationAsync<TResult>(Func<SqlDatabase, Task<TResult>> function)
+        {
+            try
+            {
+                return await function(Context);
             }
             catch (SqlException ex)
             {

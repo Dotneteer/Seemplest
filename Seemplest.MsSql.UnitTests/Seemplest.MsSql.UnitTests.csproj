@@ -85,6 +85,7 @@
     <Compile Include="DataAccess\SingleFetchAsyncTest.cs" />
     <Compile Include="DataAccess\UpdateAsyncTest.cs" />
     <Compile Include="DataAccess\UpdateTest.cs" />
+    <Compile Include="DataAccess\SqlDataAccessOperationBaseAsyncTest.cs" />
     <Compile Include="Tracing\SqlTableTraceLoggerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataAccess\FetchMultipleAsyncTest.cs" />
