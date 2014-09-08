@@ -150,17 +150,25 @@ namespace Seemplest.Core.DataAccess.DataRecords
             return (Func<TRecord, TRecord>)cloneDelegate;
         }
 
-        // --- CreateCloneDelegate generates a dynamic method that is 
-        // --- semantically equal with this one:
-        //private static TRecord DoCloning(TRecord original)
-        //{
-        //    var metadata = RecordMetadataManager.GetMetadata<TRecord>();
-        //    var clone = Activator.CreateInstance<TRecord>();
-        //    foreach (var dataColumn in metadata.DataColumns)
-        //    {
-        //        dataColumn.PropertyInfo.SetValue(clone, dataColumn.PropertyInfo.GetValue(original));
-        //    }
-        //    return clone;
-        //}
+        /// <summary>
+        /// Merges the changed properties from another object
+        /// </summary>
+        /// <param name="other">Other data record object</param>
+        public void MergeChangesFrom(TRecord other)
+        {
+            // --- Let's assume this record has already been loaded
+            _isLoaded = true;
+            var metadata = RecordMetadataManager.GetMetadata<TRecord>();
+            foreach (var dataColumn in metadata.DataColumns)
+            {
+                var propInfo = typeof (TRecord).GetProperty(dataColumn.Name);
+                var oldVal = propInfo.GetValue(this);
+                var newVal = propInfo.GetValue(other);
+                if (oldVal == null && newVal != null || oldVal != null && !oldVal.Equals(newVal))
+                {
+                    propInfo.SetValue(this, newVal);
+                }
+            }
+        }
     }
 }

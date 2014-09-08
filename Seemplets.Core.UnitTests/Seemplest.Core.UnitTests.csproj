@@ -85,6 +85,7 @@
     <Compile Include="Configuration\ResourceConnection\ResourceConnectionFactoryTest.cs" />
     <Compile Include="DataAccess\DataServices\DataAccessFactoryTest.cs" />
     <Compile Include="DataAccess\DataServices\DefaultDataAccessFactoryTest.cs" />
+    <Compile Include="DataAccess\DataRecordTest.cs" />
     <Compile Include="DependencyInjection\PerCallLifetimeManagerTest.cs" />
     <Compile Include="DependencyInjection\SampleObject.cs" />
     <Compile Include="DependencyInjection\SingletonLifetimeManagerTest.cs" />
