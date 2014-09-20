@@ -76,34 +76,6 @@ namespace Seemplest.Core.Tracing
                 TimestampUtc = EnvironmentInfo.GetCurrentDateTimeUtc().ToLocalTime();
             }
 
-            // --- Provide session ID from the current call context
-            if (SessionId == null)
-            {
-                var contextItem = ServiceCallContext.Current.Get<SessionIdlContextItem>();
-                if (contextItem != null) SessionId = contextItem.Value;
-            }
-
-            // --- Provide business transaction ID from the current call context
-            if (BusinessTransactionId == null)
-            {
-                var contextItem = ServiceCallContext.Current.Get<BusinessTransactionIdContextItem>();
-                if (contextItem != null) BusinessTransactionId = contextItem.Value;
-            }
-
-            // --- Provide operation instance ID from the current call context
-            if (OperationInstanceId == null)
-            {
-                var contextItem = ServiceCallContext.Current.Get<OperationInstanceIdContextItem>();
-                if (contextItem != null) OperationInstanceId = contextItem.Value;
-            }
-
-            // --- Provide tenant ID from the current call context
-            if (TenantId == null)
-            {
-                var contextItem = ServiceCallContext.Current.Get<TenantIdContextItem>();
-                if (contextItem != null) TenantId = contextItem.Value;
-            }
-
             // --- Provide the current machine's name as server name
             if (ServerName == null)
             {

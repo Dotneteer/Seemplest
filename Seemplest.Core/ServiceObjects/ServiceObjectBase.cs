@@ -14,6 +14,9 @@ namespace Seemplest.Core.ServiceObjects
         IServiceObject,
         IMethodAspect
     {
+        /// <summary>
+        /// Validator object
+        /// </summary>
         public Validator Verify { get; private set; }
 
         /// <summary>
@@ -27,10 +30,7 @@ namespace Seemplest.Core.ServiceObjects
         /// <summary>
         /// Gets the call context associated with the service object
         /// </summary>
-        public IServiceCallContext CallContext
-        {
-            get { return ServiceCallContext.Current; }
-        }
+        public IServiceCallContext CallContext { get; private set; }
 
         /// <summary>
         /// Gets the service object with the specified type
@@ -66,7 +66,8 @@ namespace Seemplest.Core.ServiceObjects
         [NoArgumentTrace]
         void IServiceObject.SetCallContext(IServiceCallContext context)
         {
-            ServiceCallContext.SetCurrentCallContext(context);
+            if (context == null) throw new ArgumentNullException("context");
+            CallContext = context;
         }
 
         /// <summary>

@@ -49,30 +49,5 @@ namespace Seemplest.MsSql.UnitTests.Tracing
             item.DetailedMessage.ShouldEqual("Detailed Info Message");
             item.ServerName.ShouldEqual(Environment.MachineName);
         }
-
-        [TestMethod]
-        public void SqlTableTraceLoggerUsesCallContext()
-        {
-            // --- Arrange
-            var tracer = new SqlTableTraceLogger(DB_CONN);
-            ServiceCallContext.Current.Set(new BusinessTransactionIdContextItem("B"));
-            ServiceCallContext.Current.Set(new SessionIdlContextItem("S"));
-            ServiceCallContext.Current.Set(new OperationInstanceIdContextItem("O"));
-            ServiceCallContext.Current.Set(new TenantIdContextItem("T"));
-
-            // --- Act
-            tracer.LogInfo("InfoOperation", "Info Message", "Detailed Info Message");
-
-            // --- Assert
-            var db = new SqlDatabase(DB_CONN);
-            var items = db.Fetch<TraceRecord>("order by Id");
-            items.ShouldHaveCountOf(1);
-            var item = items[0];
-            item.Type.ShouldEqual((int)TraceLogItemType.Informational);
-            item.BusinessTransactionId.ShouldEqual("B");
-            item.SessionId.ShouldEqual("S");
-            item.OperationInstanceId.ShouldEqual("O");
-            item.TenantId.ShouldEqual("T");
-        }
     }
 }

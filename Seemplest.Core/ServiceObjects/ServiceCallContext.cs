@@ -8,31 +8,9 @@ namespace Seemplest.Core.ServiceObjects
     /// </summary>
     public class ServiceCallContext : IServiceCallContext
     {
-        // --- Stores the call context of the service
-        [ThreadStatic]
-        private static IServiceCallContext s_Current;
-
         // --- Stores the service context items
         private readonly Dictionary<string, object> _contextItems = 
             new Dictionary<string, object>();
-
-        /// <summary>
-        /// Gets the current call context.
-        /// </summary>
-        public static IServiceCallContext Current
-        {
-            get { return s_Current ?? (s_Current = new ServiceCallContext()); }
-        }
-
-        /// <summary>
-        /// Sets the current call context to the specified one.
-        /// </summary>
-        /// <param name="context">Current call context to set</param>
-        internal static void SetCurrentCallContext(IServiceCallContext context)
-        {
-            if (context == null) throw new ArgumentNullException("context");
-            s_Current = context;
-        }
 
         /// <summary>
         /// Gets the value of the call context item with the specified type
