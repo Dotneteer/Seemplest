@@ -554,7 +554,7 @@ namespace Seemplest.MsSql.DataAccess
         /// <returns>The complete select statement</returns>
         public SqlExpression CompleteSelect<TData>()
         {
-            return Is(this, "select") || Is(this, "exec") ? this : New.Select<TData>().From<TData>().Append(this);
+            return Is(this, "select") || Is(this, "exec") || Is(this, "with") ? this : New.Select<TData>().From<TData>().Append(this);
         }
 
         #region Helper methods
