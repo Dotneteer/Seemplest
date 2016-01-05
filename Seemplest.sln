@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{16AEACC0-4A42-478E-B1A6-C433CBDFF4FF}"
 EndProject
@@ -31,49 +31,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BngMvcSample", "BngMvcSampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seemplest.BngMvc.Core.Tests", "Seemplest.BngMvc.Core.Tests\Seemplest.BngMvc.Core.Tests.csproj", "{EFF1D4E9-BC3E-428C-A0E0-76B95819AEC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{84579A5B-FC45-4A88-8594-188E68F8D16F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs03
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = BackgroundTaskHostSample\\BackgroundTaskHostSample.csproj
-		SccProjectTopLevelParentUniqueName1 = Seemplest.sln
-		SccProjectName1 = BackgroundTaskHostSample
-		SccLocalPath1 = BackgroundTaskHostSample
-		SccProjectUniqueName2 = Seemplest.Core.MsSql.Schema\\Seemplest.Core.MsSql.Schema.sqlproj
-		SccProjectTopLevelParentUniqueName2 = Seemplest.sln
-		SccProjectName2 = Seemplest.Core.MsSql.Schema
-		SccLocalPath2 = Seemplest.Core.MsSql.Schema
-		SccProjectUniqueName3 = Seemplest.Core\\Seemplest.Core.csproj
-		SccProjectTopLevelParentUniqueName3 = Seemplest.sln
-		SccProjectName3 = Seemplest.Core
-		SccLocalPath3 = Seemplest.Core
-		SccProjectUniqueName4 = Seemplest.MsSql.UnitTests\\Seemplest.MsSql.UnitTests.csproj
-		SccProjectTopLevelParentUniqueName4 = Seemplest.sln
-		SccProjectName4 = Seemplest.MsSql.UnitTests
-		SccLocalPath4 = Seemplest.MsSql.UnitTests
-		SccProjectUniqueName5 = Seemplest.MsSql\\Seemplest.MsSql.csproj
-		SccProjectTopLevelParentUniqueName5 = Seemplest.sln
-		SccProjectName5 = Seemplest.MsSql
-		SccLocalPath5 = Seemplest.MsSql
-		SccProjectUniqueName6 = Seemplets.Core.UnitTests\\Seemplest.Core.UnitTests.csproj
-		SccProjectTopLevelParentUniqueName6 = Seemplest.sln
-		SccProjectName6 = Seemplets.Core.UnitTests
-		SccLocalPath6 = Seemplets.Core.UnitTests
-		SccProjectUniqueName7 = Seemplest.BngMvc.Core\\Seemplest.BngMvc.Core.csproj
-		SccProjectTopLevelParentUniqueName7 = Seemplest.sln
-		SccProjectName7 = Seemplest.BngMvc.Core
-		SccLocalPath7 = Seemplest.BngMvc.Core
-		SccProjectUniqueName8 = BngMvcSample\\BngMvcSample.csproj
-		SccProjectTopLevelParentUniqueName8 = Seemplest.sln
-		SccProjectName8 = BngMvcSample
-		SccLocalPath8 = BngMvcSample
-		SccProjectUniqueName9 = Seemplest.BngMvc.Core.Tests\\Seemplest.BngMvc.Core.Tests.csproj
-		SccProjectTopLevelParentUniqueName9 = Seemplest.sln
-		SccProjectName9 = Seemplest.BngMvc.Core.Tests
-		SccLocalPath9 = Seemplest.BngMvc.Core.Tests
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
