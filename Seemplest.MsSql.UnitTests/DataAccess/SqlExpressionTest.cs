@@ -24,7 +24,7 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
         public void SelectWithNoColumnsFails()
         {
             // --- Act    
-            SqlExpression.New.Select(new object[] {});
+            SqlExpression.New.Select(new object[] { });
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             const int ARG = 23;
 
             // --- Act
-            var expression = SqlExpression.CreateFrom(EXPR, new List<object> {ARG});
+            var expression = SqlExpression.CreateFrom(EXPR, new List<object> { ARG });
 
             // --- Assert
             expression.SqlText.ShouldEqual(EXPR);
@@ -84,7 +84,7 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             var expr3 = new SqlExpression("select all top 3 c, d").Distinct;
             var expr4 = new SqlExpression("select top 3 c, d").Distinct;
             var expr5 = new SqlExpression("select distinct top 3 c, d").Distinct;
-            
+
             // --- Assert
             expr1.SqlText.ShouldEqual("select distinct a, b");
             expr2.SqlText.ShouldEqual("select distinct c, d");
@@ -243,7 +243,7 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             var clause1 = SqlExpression.New.Select("a").From("x").OrderBy("a");
             var clause2 = SqlExpression.New.Select("a", "b").From("x").OrderBy("a", "b");
             var clause3 = SqlExpression.New.Select("a").From("x").OrderBy<Record1>(r => r.Id);
-            var clause4 = SqlExpression.New.Select("a").From("x").OrderBy<Record1>(r => r.Id, r=> r.Name);
+            var clause4 = SqlExpression.New.Select("a").From("x").OrderBy<Record1>(r => r.Id, r => r.Name);
 
             // --- Assert
             clause1.SqlText.ShouldEqual("select a\nfrom x\norder by a");
@@ -257,16 +257,16 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
         {
             // --- Act
             var clause1 = new SqlExpression("@0, @1", 1, 2);
-            var clause2 = new SqlExpression("@0, @1", new object[] {1, 2});
+            var clause2 = new SqlExpression("@0, @1", new object[] { 1, 2 });
             const string PARAM1 = "param1";
             var clause3 = new SqlExpression("@0, @1, @2", PARAM1, 2, PARAM1);
-            var param2 = new object[] {2, "hello", true};
+            var param2 = new object[] { 2, "hello", true };
             var clause4 = new SqlExpression("@0, @1", 1, param2);
-            var param3 = new object[] {"hello"};
+            var param3 = new object[] { "hello" };
             var clause5 = new SqlExpression("@0, @1", 1, param3);
-            var param4 = new object[] {};
+            var param4 = new object[] { };
             var clause6 = new SqlExpression("@0, @1", 1, param4);
-            var param5 = new object[] {PARAM1, 3, PARAM1};
+            var param5 = new object[] { PARAM1, 3, PARAM1 };
             var clause7 = new SqlExpression("@0, @1", param5, 1);
             var clause8 = new SqlExpression("@0, @1", PARAM1, param5);
 
@@ -320,7 +320,7 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
         public void ProcessParameterWithNameWorks()
         {
             // --- Act
-            var clause1 = new SqlExpression("@Id, @Name", new Record1 { Id=23, Name = "hello"});
+            var clause1 = new SqlExpression("@Id, @Name", new Record1 { Id = 23, Name = "hello" });
             var clause2 = new SqlExpression("@Field, @Name", new Record1 { Id = 23, Name = "hello" },
                 new Record5 { Field = "field" });
 
@@ -377,8 +377,19 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             completeClause2.SqlText.ShouldEqual("select Id, DisplayName, Description\nfrom [dbo].[Record1]\nwhere Id = 0");
         }
 
+        [TestMethod]
+        public void CompleteSelectReturnsWithClauseWorksAsExpected()
+        {
+            // --- Act
+            var clause = SqlExpression.CreateFrom("WITH dates as (select getdate() as currentDate) SELECT currentDate FROM dates");
+            var completeClause = clause.CompleteSelect<Data1>();
+
+            // --- Assert
+            completeClause.SqlText.ShouldEqual("WITH dates as (select getdate() as currentDate) SELECT currentDate FROM dates");
+        }
+
         [TableName("Record1")]
-        class Record1: DataRecord<Record1> 
+        class Record1 : DataRecord<Record1>
         {
             // ReSharper disable UnusedMember.Local
             // ReSharper disable UnusedAutoPropertyAccessor.Local
@@ -436,6 +447,11 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             public string Field { get; set; }
             // ReSharper restore UnusedAutoPropertyAccessor.Local
             // ReSharper restore UnusedMember.Local
+        }
+
+        class Data1
+        {
+            public DateTime CurrentDate { get; set; }
         }
     }
 }

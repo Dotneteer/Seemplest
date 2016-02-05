@@ -492,6 +492,24 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             row2.Name.ShouldEqual("First");
         }
 
+        [TestMethod]
+        public async Task FetchAsyncFromCommonTableExpressionWorksAsExpected()
+        {
+            // --- Arrange
+            var db = new SqlDatabase(DB_CONN);
+
+            // --- Act
+            var dates = await db.FetchAsync<Data1>(SqlExpression.CreateFrom(@"WITH dates as
+                                                                                    (select getdate() as currentDate)
+                                                                                SELECT 
+                                                                                    currentDate 
+                                                                                FROM 
+                                                                                    dates"));
+            // --- Assert
+            dates.ShouldNotBeEmpty();
+            dates.ShouldHaveCountOf(1);
+        }
+
         class SampleListConverter : DualConverterBase<string, List<string>>
         {
             public override List<string> ConvertFromDataType(string dataType)
@@ -599,5 +617,9 @@ namespace Seemplest.MsSql.UnitTests.DataAccess
             public string Name { get; set; }
         }
 
+        class Data1
+        {
+            public DateTime CurrentDate { get; set; }
+        }
     }
 }
